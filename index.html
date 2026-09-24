@@ -14,6 +14,7 @@
             --text-gray: #666666;
             --bg-color: #ffffff;
             --bg-light: #f9f9fb;
+            --bg-dark: #1e293b; /* Warna latar belakang ala referensi pendidikan */
             --card-bg: #ffffff;
             --border-color: #eaeaea;
         }
@@ -163,12 +164,7 @@
             display: block;
         }
 
-        /* --- Section: Tentang Saya --- */
-        .about-section {
-            padding: 80px 8%;
-            background-color: var(--bg-light);
-        }
-
+        /* --- Section Umum --- */
         .section-title {
             color: var(--primary-purple);
             font-size: 0.9rem;
@@ -178,6 +174,12 @@
             margin-bottom: 10px;
         }
 
+        /* --- Section: Tentang Saya --- */
+        .about-section {
+            padding: 80px 8%;
+            background-color: var(--bg-light);
+        }
+
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -185,8 +187,8 @@
             align-items: start;
         }
 
-        .about-left h2 {
-            font-size: 2.2rem;
+        .about-left h2, .about-right h3 {
+            font-size: 2rem;
             font-weight: 700;
             color: var(--text-dark);
             margin-top: 0;
@@ -199,15 +201,7 @@
             font-size: 1rem;
         }
 
-        .about-right h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-top: 0;
-            line-height: 1.3;
-        }
-
-        /* --- Section: Portfolio / Project (Sesuai Referensi) --- */
+        /* --- Section: Portfolio --- */
         .portfolio-section {
             padding: 80px 8%;
             background-color: var(--bg-color);
@@ -295,6 +289,87 @@
             margin: 0;
         }
 
+        /* --- Section: Pendidikan (Sesuai Referensi Dark Theme & Efek Warna) --- */
+        .education-section {
+            padding: 80px 8%;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .education-header {
+            margin-bottom: 50px;
+        }
+
+        .education-header .section-title {
+            color: #a78bfa; /* Ungu terang agar kontras di background gelap */
+        }
+
+        .education-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: #ffffff;
+        }
+
+        .education-header p {
+            color: #94a3b8;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .edu-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .edu-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 16px;
+            width: 280px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .edu-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Efek Gambar Hitam-Putih yang Berubah Berwarna Saat Disorot/Diklik */
+        .edu-logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            filter: grayscale(100%) brightness(150%); /* Membuat logo jadi hitam putih/pudar */
+            transition: filter 0.4s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .edu-logo:hover, .edu-logo:active {
+            filter: grayscale(0%) brightness(100%); /* Berubah jadi berwarna penuh saat diklik/disorot */
+            transform: scale(1.05);
+        }
+
+        .edu-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            color: #ffffff;
+        }
+
+        .edu-card p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin: 0;
+            line-height: 1.5;
+        }
+
         /* --- Responsivitas HP --- */
         @media (max-width: 992px) {
             .hero, .about-container {
@@ -377,7 +452,6 @@
         </div>
 
         <div class="portfolio-grid">
-            <!-- Proyek 1 -->
             <div class="portfolio-card">
                 <div class="card-preview">PRO-GRADE System</div>
                 <div class="card-body">
@@ -387,7 +461,6 @@
                 </div>
             </div>
 
-            <!-- Proyek 2 -->
             <div class="portfolio-card">
                 <div class="card-preview">Citatah Climbing Co.</div>
                 <div class="card-body">
@@ -397,7 +470,6 @@
                 </div>
             </div>
 
-            <!-- Proyek 3 -->
             <div class="portfolio-card">
                 <div class="card-preview">Simulasi SCM Globe</div>
                 <div class="card-body">
@@ -405,6 +477,25 @@
                     <a href="#" class="card-link">Lihat Simulasi</a>
                     <p>Pemodelan dan simulasi rantai pasok menggunakan perangkat lunak SCM Globe untuk proyek distribusi pakan koperasi.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Pendidikan (Sesuai Referensi & Efek Klik Jadi Berwarna) -->
+    <section id="pendidikan" class="education-section">
+        <div class="education-header">
+            <div class="section-title">Pendidikan</div>
+            <h2>Riwayat Pendidikan</h2>
+            <p>Pernah belajar pada institusi akademik berikut</p>
+        </div>
+
+        <div class="edu-grid">
+            <!-- Kartu Pendidikan ULBI -->
+            <div class="edu-card">
+                <!-- Ganti 'logo-ulbi.png' dengan nama file logo kampus Anda yang diunggah ke GitHub -->
+                <img src="logo-ulbi.png" alt="Logo ULBI" class="edu-logo" title="Klik untuk melihat warna asli">
+                <h3>Universitas Logistik & Bisnis Internasional</h3>
+                <p>S1 Manajemen Logistik<br>Bandung</p>
             </div>
         </div>
     </section>
