@@ -14,7 +14,7 @@
             --text-gray: #666666;
             --bg-color: #ffffff;
             --bg-light: #f9f9fb;
-            --bg-dark: #1e293b; /* Warna latar belakang ala referensi pendidikan */
+            --bg-dark: #1e293b;
             --card-bg: #ffffff;
             --border-color: #eaeaea;
         }
@@ -289,7 +289,7 @@
             margin: 0;
         }
 
-        /* --- Section: Pendidikan (Sesuai Referensi Dark Theme & Efek Warna) --- */
+        /* --- Section: Pendidikan & Sertifikasi (Dark Theme dengan Efek Warna) --- */
         .education-section {
             padding: 80px 8%;
             background-color: var(--bg-dark);
@@ -302,7 +302,7 @@
         }
 
         .education-header .section-title {
-            color: #a78bfa; /* Ungu terang agar kontras di background gelap */
+            color: #a78bfa;
         }
 
         .education-header h2 {
@@ -321,9 +321,9 @@
         .edu-grid {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: stretch;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 30px;
         }
 
         .edu-card {
@@ -331,7 +331,10 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 30px;
             border-radius: 16px;
-            width: 280px;
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             transition: transform 0.3s ease, background 0.3s ease;
         }
 
@@ -340,34 +343,34 @@
             background: rgba(255, 255, 255, 0.08);
         }
 
-        /* Efek Gambar Hitam-Putih yang Berubah Berwarna Saat Disorot/Diklik */
+        /* Efek Hitam-Putih yang Berubah Berwarna Saat Disorot/Diklik */
         .edu-logo {
-            width: 120px;
-            height: 120px;
+            width: 90px;
+            height: 90px;
             object-fit: contain;
             margin-bottom: 20px;
-            filter: grayscale(100%) brightness(150%); /* Membuat logo jadi hitam putih/pudar */
+            filter: grayscale(100%) brightness(150%);
             transition: filter 0.4s ease, transform 0.3s ease;
             cursor: pointer;
         }
 
         .edu-logo:hover, .edu-logo:active {
-            filter: grayscale(0%) brightness(100%); /* Berubah jadi berwarna penuh saat diklik/disorot */
+            filter: grayscale(0%) brightness(100%);
             transform: scale(1.05);
         }
 
         .edu-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin: 0 0 10px 0;
+            margin: 0 0 8px 0;
             color: #ffffff;
         }
 
         .edu-card p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #94a3b8;
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         /* --- Responsivitas HP --- */
@@ -481,21 +484,41 @@
         </div>
     </section>
 
-    <!-- Bagian Pendidikan (Sesuai Referensi & Efek Klik Jadi Berwarna) -->
+    <!-- Bagian Pendidikan & Riwayat (Sesuai Urutan: ULBI, Magang Berdampak, BNSP, SAP) -->
     <section id="pendidikan" class="education-section">
         <div class="education-header">
-            <div class="section-title">Pendidikan</div>
-            <h2>Riwayat Pendidikan</h2>
-            <p>Pernah belajar pada institusi akademik berikut</p>
+            <div class="section-title">Pendidikan & Sertifikasi</div>
+            <h2>Riwayat Akademik & Program</h2>
+            <p>Institusi dan program yang pernah diikuti</p>
         </div>
 
         <div class="edu-grid">
-            <!-- Kartu Pendidikan ULBI -->
+            <!-- 1. ULBI -->
             <div class="edu-card">
-                <!-- Ganti 'logo-ulbi.png' dengan nama file logo kampus Anda yang diunggah ke GitHub -->
                 <img src="logo-ulbi.png" alt="Logo ULBI" class="edu-logo" title="Klik untuk melihat warna asli">
-                <h3>Universitas Logistik & Bisnis Internasional</h3>
+                <h3>ULBI</h3>
                 <p>S1 Manajemen Logistik<br>Bandung</p>
+            </div>
+
+            <!-- 2. Magang Berdampak -->
+            <div class="edu-card">
+                <img src="logo-magang.png" alt="Logo Magang Berdampak" class="edu-logo" title="Klik untuk melihat warna asli">
+                <h3>Magang Berdampak</h3>
+                <p>Commercial Marketing Intern<br>PT Masaji Tatanan Container</p>
+            </div>
+
+            <!-- 3. BNSP -->
+            <div class="edu-card">
+                <img src="logo-bnsp.png" alt="Logo BNSP" class="edu-logo" title="Klik untuk melihat warna asli">
+                <h3>BNSP</h3>
+                <p>Sertifikasi Kompetensi<br>Profesi Terkait</p>
+            </div>
+
+            <!-- 4. SAP -->
+            <div class="edu-card">
+                <img src="logo-sap.png" alt="Logo SAP" class="edu-logo" title="Klik untuk melihat warna asli">
+                <h3>SAP</h3>
+                <p>Pelatihan & Pemahaman Sistem Enterprise</p>
             </div>
         </div>
     </section>
