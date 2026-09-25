@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio - Evan Krisna Wijaya</title>
+    <!-- FontAwesome untuk ikon sosial media -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Import Font dari Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -31,14 +33,14 @@
             color: var(--text-dark);
         }
 
-        /* --- Navigasi dengan Efek Kotak Blur (Glassmorphism) saat di-scroll --- */
+        /* --- Navigasi dengan Kotak Blur (Glassmorphism) saat di-scroll --- */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparan */
-            backdrop-filter: blur(10px); /* Efek blur di belakang navbar */
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
@@ -555,6 +557,75 @@
             text-decoration: underline;
         }
 
+        /* --- Section: Kontak (Sesuai Referensi) --- */
+        .contact-section {
+            padding: 90px 8%;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .contact-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 10px 0 30px 0;
+            color: var(--text-dark);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .social-icon-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 55px;
+            height: 55px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            color: var(--primary-purple);
+            font-size: 1.25rem;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon-btn:hover {
+            background-color: var(--primary-purple);
+            color: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(106, 27, 154, 0.2);
+        }
+
+        /* --- Tombol Kembali ke Atas (Scroll to Top) --- */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-purple);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .scroll-top-btn:hover {
+            background-color: #55157d;
+            transform: translateY(-3px);
+        }
+
         /* --- Responsivitas HP --- */
         @media (max-width: 992px) {
             .hero, .about-container {
@@ -577,7 +648,7 @@
 </head>
 <body>
 
-    <!-- Bagian Navigasi dengan Kotak Blur (Glassmorphism) -->
+    <!-- Bagian Navigasi dengan Kotak Blur -->
     <nav>
         <a href="#" class="logo">evankrisnawijaya</a>
         <ul class="nav-links">
@@ -761,6 +832,50 @@
             </div>
         </div>
     </section>
+
+    <!-- Bagian Kontak (Hubungi Saya) -->
+    <section id="kontak" class="contact-section">
+        <div class="section-title">Kontak</div>
+        <div class="contact-header">
+            <h2>Hubungi Saya</h2>
+        </div>
+
+        <div class="social-icons">
+            <!-- 1. Telepon -->
+            <a href="tel:+6281234567890" class="social-icon-btn" title="Telepon">
+                <i class="fa-solid fa-phone"></i>
+            </a>
+            <!-- 2. WhatsApp -->
+            <a href="https://wa.me/6281234567890" target="_blank" class="social-icon-btn" title="WhatsApp">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+            <!-- 3. LinkedIn -->
+            <a href="https://linkedin.com/in/username-anda" target="_blank" class="social-icon-btn" title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <!-- 4. GitHub -->
+            <a href="https://github.com/evankrisnaa11" target="_blank" class="social-icon-btn" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <!-- 5. Instagram -->
+            <a href="https://instagram.com/username-anda" target="_blank" class="social-icon-btn" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <!-- 6. YouTube -->
+            <a href="https://youtube.com/@username-anda" target="_blank" class="social-icon-btn" title="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+            <!-- 7. Twitter / X -->
+            <a href="https://twitter.com/username-anda" target="_blank" class="social-icon-btn" title="Twitter">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Tombol Kembali ke Atas -->
+    <a href="#" class="scroll-top-btn" title="Kembali ke atas">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
 
 </body>
 </html>
