@@ -31,17 +31,20 @@
             color: var(--text-dark);
         }
 
-        /* --- Navigasi --- */
+        /* --- Navigasi dengan Efek Kotak Blur (Glassmorphism) saat di-scroll --- */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background-color: var(--bg-color);
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparan */
+            backdrop-filter: blur(10px); /* Efek blur di belakang navbar */
+            -webkit-backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            transition: background-color 0.3s ease;
         }
 
         .logo {
@@ -54,7 +57,7 @@
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 25px;
             margin: 0;
             padding: 0;
         }
@@ -372,7 +375,7 @@
             line-height: 1.4;
         }
 
-        /* --- Section: Pengalaman (Kerja & Organisasi) --- */
+        /* --- Section: Pengalaman --- */
         .experience-section {
             padding: 80px 8%;
             background-color: var(--bg-light);
@@ -461,6 +464,97 @@
             line-height: 1.4;
         }
 
+        /* --- Section: Blog --- */
+        .blog-section {
+            padding: 80px 8%;
+            background-color: var(--bg-color);
+            text-align: center;
+        }
+
+        .blog-header {
+            margin-bottom: 50px;
+        }
+
+        .blog-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: var(--text-dark);
+        }
+
+        .blog-header p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .blog-preview {
+            background: #e2e8f0;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-purple);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .blog-body {
+            padding: 25px;
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .blog-body h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 10px 0;
+        }
+
+        .blog-body p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0 0 15px 0;
+        }
+
+        .blog-link {
+            color: var(--primary-purple);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .blog-link:hover {
+            text-decoration: underline;
+        }
+
         /* --- Responsivitas HP --- */
         @media (max-width: 992px) {
             .hero, .about-container {
@@ -483,7 +577,7 @@
 </head>
 <body>
 
-    <!-- Bagian Navigasi -->
+    <!-- Bagian Navigasi dengan Kotak Blur (Glassmorphism) -->
     <nav>
         <a href="#" class="logo">evankrisnawijaya</a>
         <ul class="nav-links">
@@ -492,6 +586,7 @@
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#pendidikan">Pendidikan</a></li>
             <li><a href="#pengalaman">Pengalaman</a></li>
+            <li><a href="#blog">Blog</a></li>
             <li><a href="#kontak">Kontak</a></li>
         </ul>
     </nav>
@@ -612,7 +707,6 @@
             <p>Rekam jejak profesional dan kepemimpinan organisasi</p>
         </div>
 
-        <!-- Sub-kategori: Pengalaman Kerja & Magang -->
         <div class="exp-category-title">Pengalaman Kerja & Magang</div>
         <div class="exp-grid">
             <div class="exp-card">
@@ -622,20 +716,48 @@
             </div>
         </div>
 
-        <!-- Sub-kategori: Pengalaman Organisasi -->
         <div class="exp-category-title">Pengalaman Organisasi</div>
         <div class="exp-grid">
-            <!-- GEMPAR -->
             <div class="exp-card">
                 <img src="logo-gempar.png" alt="GEMPAR" class="exp-logo" title="Klik untuk melihat warna asli">
                 <h3>GEMPAR ULBI</h3>
                 <p>Sekretaris & Badan Pendidikan dan Latihan Dasar<br>Organisasi Mahasiswa Pecinta Alam</p>
             </div>
-            <!-- PMK -->
             <div class="exp-card">
                 <img src="logo-pmk.png" alt="PMK" class="exp-logo" title="Klik untuk melihat warna asli">
                 <h3>PMK</h3>
                 <p>Media Dokumentasi Publikasi (2023 - 2024)<br>Ketua Umum (2024 - 2025)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Blog -->
+    <section id="blog" class="blog-section">
+        <div class="blog-header">
+            <div class="section-title">Blog</div>
+            <h2>Catatan & Artikel</h2>
+            <p>Tulisan seputar logistik, otomatisasi data, dan pengalaman organisasi</p>
+        </div>
+
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-preview">Artikel 1</div>
+                <div class="blog-body">
+                    <span class="blog-date">September 2026</span>
+                    <h3>Otomatisasi Yard Management dengan Google Apps Script</h3>
+                    <p>Bagaimana penerapan sistem berbasis cloud sederhana dapat meningkatkan efisiensi operasional harian di depo kontainer.</p>
+                    <a href="#" class="blog-link">Baca Selengkapnya &rarr;</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-preview">Artikel 2</div>
+                <div class="blog-body">
+                    <span class="blog-date">Agustus 2026</span>
+                    <h3>Refleksi Kepemimpinan di Organisasi Mahasiswa</h3>
+                    <p>Pelajaran berharga seputar manajemen tim, penyusunan laporan pertanggungjawaban, dan dinamika kegiatan alam bebas.</p>
+                    <a href="#" class="blog-link">Baca Selengkapnya &rarr;</a>
+                </div>
             </div>
         </div>
     </section>
