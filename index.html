@@ -289,7 +289,7 @@
             margin: 0;
         }
 
-        /* --- Section: Pendidikan & Sertifikasi (Dark Theme dengan Efek Warna) --- */
+        /* --- Section: Pendidikan --- */
         .education-section {
             padding: 80px 8%;
             background-color: var(--bg-dark);
@@ -343,7 +343,6 @@
             background: rgba(255, 255, 255, 0.08);
         }
 
-        /* Efek Hitam-Putih yang Berubah Berwarna Saat Disorot/Diklik */
         .edu-logo {
             width: 90px;
             height: 90px;
@@ -369,6 +368,95 @@
         .edu-card p {
             font-size: 0.85rem;
             color: #94a3b8;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* --- Section: Pengalaman (Kerja & Organisasi) --- */
+        .experience-section {
+            padding: 80px 8%;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .experience-header {
+            margin-bottom: 50px;
+        }
+
+        .experience-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: var(--text-dark);
+        }
+
+        .experience-header p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .exp-category-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-purple);
+            margin: 40px 0 20px 0;
+            text-align: left;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .exp-grid {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .exp-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 16px;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .exp-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            filter: grayscale(100%) brightness(100%);
+            transition: filter 0.4s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .exp-logo:hover, .exp-logo:active {
+            filter: grayscale(0%) brightness(100%);
+            transform: scale(1.05);
+        }
+
+        .exp-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            color: var(--text-dark);
+        }
+
+        .exp-card p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
             margin: 0;
             line-height: 1.4;
         }
@@ -484,7 +572,7 @@
         </div>
     </section>
 
-    <!-- Bagian Pendidikan & Riwayat (Sesuai Urutan: ULBI, Magang Berdampak, BNSP, SAP) -->
+    <!-- Bagian Pendidikan -->
     <section id="pendidikan" class="education-section">
         <div class="education-header">
             <div class="section-title">Pendidikan & Sertifikasi</div>
@@ -493,32 +581,61 @@
         </div>
 
         <div class="edu-grid">
-            <!-- 1. ULBI -->
             <div class="edu-card">
-                <img src="logo-ulbii.png" alt="Logo ULBI" class="edu-logo" title="Klik untuk melihat warna asli">
+                <img src="logo-ulbi.png" alt="Logo ULBI" class="edu-logo" title="Klik untuk melihat warna asli">
                 <h3>ULBI</h3>
                 <p>S1 Manajemen Logistik<br>Bandung</p>
             </div>
-
-            <!-- 2. Magang Berdampak -->
             <div class="edu-card">
-                <img src="logo-magang.png" alt="Logo Magang Berdampak" class="edu-logo" title="Klik untuk melihat warna asli">
+                <img src="logo-magang.png" alt="Logo Magang" class="edu-logo" title="Klik untuk melihat warna asli">
                 <h3>Magang Berdampak</h3>
                 <p>Commercial Marketing Intern<br>PT Masaji Tatanan Container</p>
             </div>
-
-            <!-- 3. BNSP -->
             <div class="edu-card">
                 <img src="logo-bnsp.png" alt="Logo BNSP" class="edu-logo" title="Klik untuk melihat warna asli">
                 <h3>BNSP</h3>
                 <p>Sertifikasi Kompetensi<br>Profesi Terkait</p>
             </div>
-
-            <!-- 4. SAP -->
             <div class="edu-card">
-                <img src="logo-sap.png.webp" alt="Logo SAP" class="edu-logo" title="Klik untuk melihat warna asli">
+                <img src="logo-sap.png" alt="Logo SAP" class="edu-logo" title="Klik untuk melihat warna asli">
                 <h3>SAP</h3>
                 <p>Pelatihan & Pemahaman Sistem Enterprise</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Pengalaman (Kerja & Organisasi) -->
+    <section id="pengalaman" class="experience-section">
+        <div class="experience-header">
+            <div class="section-title">Pengalaman</div>
+            <h2>Pengalaman Kerja & Organisasi</h2>
+            <p>Rekam jejak profesional dan kepemimpinan organisasi</p>
+        </div>
+
+        <!-- Sub-kategori: Pengalaman Kerja & Magang -->
+        <div class="exp-category-title">Pengalaman Kerja & Magang</div>
+        <div class="exp-grid">
+            <div class="exp-card">
+                <img src="logo-masaji.png" alt="PT Masaji Tatanan Container" class="exp-logo" title="Klik untuk melihat warna asli">
+                <h3>PT Masaji Tatanan Container Indonesia</h3>
+                <p>Commercial Marketing Intern<br>Agustus 2025 - Desember 2025</p>
+            </div>
+        </div>
+
+        <!-- Sub-kategori: Pengalaman Organisasi -->
+        <div class="exp-category-title">Pengalaman Organisasi</div>
+        <div class="exp-grid">
+            <!-- GEMPAR -->
+            <div class="exp-card">
+                <img src="logo-gempar.png" alt="GEMPAR" class="exp-logo" title="Klik untuk melihat warna asli">
+                <h3>GEMPAR ULBI</h3>
+                <p>Sekretaris & Badan Pendidikan dan Latihan Dasar<br>Organisasi Mahasiswa Pecinta Alam</p>
+            </div>
+            <!-- PMK -->
+            <div class="exp-card">
+                <img src="logo-pmk.png" alt="PMK" class="exp-logo" title="Klik untuk melihat warna asli">
+                <h3>PMK</h3>
+                <p>Media Dokumentasi Publikasi (2023 - 2024)<br>Ketua Umum (2024 - 2025)</p>
             </div>
         </div>
     </section>
