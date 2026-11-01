@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Proyek - PRO-GRADE System</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9fb;
+            color: #1a1a1a;
+        }
+
+        /* --- Header Khusus Halaman Detail --- */
+        .detail-header {
+            background-color: #ffffff;
+            padding: 20px 8%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: #6a1b9a;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #4a136c;
+        }
+
+        /* --- Konten Detail Proyek --- */
+        .detail-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .detail-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .detail-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 10px 0;
+        }
+
+        .detail-category {
+            color: #6a1b9a;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .detail-content p {
+            color: #666666;
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .detail-container {
+                margin: 20px;
+                padding: 25px;
+            }
+            .detail-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="detail-header">
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
+        </a>
+    </header>
+
+    <div class="detail-container">
+        <!-- Ganti 'gambar-prograde.jpg' dengan nama gambar proyek Anda -->
+        <img src="gambar-prograde.jpg" alt="PRO-GRADE System" class="detail-img">
+        
+        <h1 class="detail-title">PRO-GRADE System</h1>
+        <span class="detail-category">Sistem Pendukung Keputusan (DSS)</span>
+        
+        <div class="detail-content">
+            <p>
+                Di sinilah Anda bisa menuliskan deskripsi panjang lebar tentang proyek PRO-GRADE System. Anda bisa menjelaskan latar belakang masalah mengapa sistem ini dibuat, yakni untuk memberikan rekomendasi grading kontainer secara otomatis.
+            </p>
+            <p>
+                Sistem ini dibangun menggunakan ekosistem Google, secara spesifik memanfaatkan kekuatan Google Apps Script dan Google Sheets. Dengan mengolah puluhan ribu data histori transaksi, sistem ini membantu meminimalisir *human error* di lapangan.
+            </p>
+            <p>
+                Hasil dari penerapan purwarupa ini menunjukkan peningkatan efisiensi yang signifikan pada *yard management* di depo kontainer, memudahkan operator dalam mengambil keputusan penempatan logistik yang tepat.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
