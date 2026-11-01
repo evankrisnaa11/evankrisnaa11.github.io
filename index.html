@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio - Evan Krisna Wijaya</title>
-    <link rel="icon" type="jpg" href="favicon.jpg">
+    <link rel="icon" type="image/png" href="favicon.png">
     <!-- FontAwesome untuk ikon sosial media -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -32,9 +32,10 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-dark);
+            overflow-x: hidden; /* Mencegah scroll menyamping */
         }
 
-        /* --- Navigasi dengan Kotak Blur (Glassmorphism) saat di-scroll --- */
+        /* --- Navigasi dengan Kotak Blur --- */
         nav {
             display: flex;
             justify-content: space-between;
@@ -75,6 +76,18 @@
 
         .nav-links li a:hover {
             color: var(--primary-purple);
+        }
+
+        /* --- Animasi Scroll Reveal (Fade in Up) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px); /* Elemen turun 40px */
+            transition: all 0.8s ease-out; /* Durasi animasi 0.8 detik */
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0); /* Elemen naik ke posisi asli */
         }
 
         /* --- Hero Section (Beranda) --- */
@@ -603,7 +616,7 @@
             box-shadow: 0 6px 12px rgba(106, 27, 154, 0.2);
         }
 
-        /* --- Tombol Kembali ke Atas (Scroll to Top) --- */
+        /* --- Tombol Kembali ke Atas --- */
         .scroll-top-btn {
             position: fixed;
             bottom: 30px;
@@ -649,7 +662,7 @@
 </head>
 <body>
 
-    <!-- Bagian Navigasi dengan Kotak Blur -->
+    <!-- Bagian Navigasi -->
     <nav>
         <a href="#" class="logo">evankrisnawijaya</a>
         <ul class="nav-links">
@@ -664,8 +677,9 @@
     </nav>
 
     <!-- Bagian Beranda (Hero) -->
+    <!-- Kelas 'reveal' ditambahkan untuk memicu animasi fade-in -->
     <section class="hero">
-        <div class="hero-text">
+        <div class="hero-text reveal">
             <div class="greeting">Halo Semua 👋, Saya</div>
             <h1>Evan Krisna Wijaya</h1>
             <h3>Spesialis Otomatisasi Data <span>S1 Manajemen Logistik</span></h3>
@@ -675,24 +689,25 @@
             <a href="#kontak" class="btn-contact">Hubungi Saya</a>
         </div>
 
-        <div class="hero-image">
+        <div class="hero-image reveal">
             <div class="image-bg-circle">
-                <img src="foto-evan.png.png" alt="Foto Evan Krisna Wijaya">
+                <!-- Telah diperbaiki: .png.png menjadi .png -->
+                <img src="foto-evan.png" alt="Foto Evan Krisna Wijaya">
             </div>
         </div>
     </section>
 
     <!-- Bagian Tentang Saya -->
     <section id="tentang" class="about-section">
-        <div class="section-title">Tentang Saya</div>
+        <div class="section-title reveal">Tentang Saya</div>
         <div class="about-container">
-            <div class="about-left">
+            <div class="about-left reveal">
                 <h2>Spesialis Otomatisasi Data & Lulusan Manajemen Logistik</h2>
                 <p>
                     Saya adalah lulusan S1 Manajemen Logistik dari Universitas Logistik dan Bisnis Internasional (ULBI) dengan ketertarikan mendalam pada efisiensi operasional rantai pasok, otomatisasi proses bisnis menggunakan Google Apps Script, serta perancangan sistem berbasis data.
                 </p>
             </div>
-            <div class="about-right">
+            <div class="about-right reveal">
                 <h3>Keahlian & Fokus Utama</h3>
                 <p>
                     Berpengalaman dalam merancang Sistem Pendukung Keputusan (DSS) seperti PRO-GRADE System untuk manajemen lapangan depo kontainer, simulasi rantai pasok menggunakan SCM Globe, serta memiliki latar belakang kepemimpinan organisasi mahasiswa pecinta alam (GEMPAR).
@@ -703,14 +718,14 @@
 
     <!-- Bagian Portfolio (Project) -->
     <section id="portfolio" class="portfolio-section">
-        <div class="portfolio-header">
+        <div class="portfolio-header reveal">
             <div class="section-title">Portfolio</div>
             <h2>Project</h2>
             <p>Berikut beberapa project yang pernah dikembangkan</p>
         </div>
 
         <div class="portfolio-grid">
-            <div class="portfolio-card">
+            <div class="portfolio-card reveal">
                 <div class="card-preview">PRO-GRADE System</div>
                 <div class="card-body">
                     <h3>PRO-GRADE System</h3>
@@ -719,7 +734,7 @@
                 </div>
             </div>
 
-            <div class="portfolio-card">
+            <div class="portfolio-card reveal">
                 <div class="card-preview">Citatah Climbing Co.</div>
                 <div class="card-body">
                     <h3>Citatah Climbing Co.</h3>
@@ -728,7 +743,7 @@
                 </div>
             </div>
 
-            <div class="portfolio-card">
+            <div class="portfolio-card reveal">
                 <div class="card-preview">Simulasi SCM Globe</div>
                 <div class="card-body">
                     <h3>Simulasi Rantai Pasok</h3>
@@ -741,29 +756,29 @@
 
     <!-- Bagian Pendidikan -->
     <section id="pendidikan" class="education-section">
-        <div class="education-header">
+        <div class="education-header reveal">
             <div class="section-title">Pendidikan & Sertifikasi</div>
             <h2>Riwayat Akademik & Program</h2>
             <p>Institusi dan program yang pernah diikuti</p>
         </div>
 
         <div class="edu-grid">
-            <div class="edu-card">
+            <div class="edu-card reveal">
                 <img src="logo-ulbi.png" alt="Logo ULBI" class="edu-logo" title="Klik untuk melihat warna asli">
                 <h3>ULBI</h3>
                 <p>S1 Manajemen Logistik<br>Bandung</p>
             </div>
-            <div class="edu-card">
+            <div class="edu-card reveal">
                 <img src="logo-magang.png" alt="Logo Magang" class="edu-logo" title="Klik untuk melihat warna asli">
                 <h3>Magang Berdampak</h3>
                 <p>Commercial Marketing Intern<br>PT Masaji Tatanan Container</p>
             </div>
-            <div class="edu-card">
+            <div class="edu-card reveal">
                 <img src="logo-bnsp.png" alt="Logo BNSP" class="edu-logo" title="Klik untuk melihat warna asli">
                 <h3>BNSP</h3>
                 <p>Sertifikasi Kompetensi<br>Profesi Terkait</p>
             </div>
-            <div class="edu-card">
+            <div class="edu-card reveal">
                 <img src="logo-sap.png" alt="Logo SAP" class="edu-logo" title="Klik untuk melihat warna asli">
                 <h3>SAP</h3>
                 <p>Pelatihan & Pemahaman Sistem Enterprise</p>
@@ -773,29 +788,29 @@
 
     <!-- Bagian Pengalaman (Kerja & Organisasi) -->
     <section id="pengalaman" class="experience-section">
-        <div class="experience-header">
+        <div class="experience-header reveal">
             <div class="section-title">Pengalaman</div>
             <h2>Pengalaman Kerja & Organisasi</h2>
             <p>Rekam jejak profesional dan kepemimpinan organisasi</p>
         </div>
 
-        <div class="exp-category-title">Pengalaman Kerja & Magang</div>
+        <div class="exp-category-title reveal">Pengalaman Kerja & Magang</div>
         <div class="exp-grid">
-            <div class="exp-card">
+            <div class="exp-card reveal">
                 <img src="logo-masaji.png" alt="PT Masaji Tatanan Container" class="exp-logo" title="Klik untuk melihat warna asli">
                 <h3>PT Masaji Tatanan Container Indonesia</h3>
                 <p>Commercial Marketing Intern<br>Agustus 2025 - Desember 2025</p>
             </div>
         </div>
 
-        <div class="exp-category-title">Pengalaman Organisasi</div>
+        <div class="exp-category-title reveal">Pengalaman Organisasi</div>
         <div class="exp-grid">
-            <div class="exp-card">
+            <div class="exp-card reveal">
                 <img src="logo-gempar.png" alt="GEMPAR" class="exp-logo" title="Klik untuk melihat warna asli">
                 <h3>GEMPAR ULBI</h3>
                 <p>Sekretaris & Badan Pendidikan dan Latihan Dasar<br>Organisasi Mahasiswa Pecinta Alam</p>
             </div>
-            <div class="exp-card">
+            <div class="exp-card reveal">
                 <img src="logo-pmk.png" alt="PMK" class="exp-logo" title="Klik untuk melihat warna asli">
                 <h3>PMK</h3>
                 <p>Media Dokumentasi Publikasi (2023 - 2024)<br>Ketua Umum (2024 - 2025)</p>
@@ -805,14 +820,14 @@
 
     <!-- Bagian Blog -->
     <section id="blog" class="blog-section">
-        <div class="blog-header">
+        <div class="blog-header reveal">
             <div class="section-title">Blog</div>
             <h2>Catatan & Artikel</h2>
             <p>Tulisan seputar logistik, otomatisasi data, dan pengalaman organisasi</p>
         </div>
 
         <div class="blog-grid">
-            <div class="blog-card">
+            <div class="blog-card reveal">
                 <div class="blog-preview">Artikel 1</div>
                 <div class="blog-body">
                     <span class="blog-date">September 2026</span>
@@ -822,7 +837,7 @@
                 </div>
             </div>
 
-            <div class="blog-card">
+            <div class="blog-card reveal">
                 <div class="blog-preview">Artikel 2</div>
                 <div class="blog-body">
                     <span class="blog-date">Agustus 2026</span>
@@ -834,39 +849,33 @@
         </div>
     </section>
 
-    <!-- Bagian Kontak (Hubungi Saya) -->
+    <!-- Bagian Kontak -->
     <section id="kontak" class="contact-section">
-        <div class="section-title">Kontak</div>
-        <div class="contact-header">
+        <div class="section-title reveal">Kontak</div>
+        <div class="contact-header reveal">
             <h2>Hubungi Saya</h2>
         </div>
 
-        <div class="social-icons">
-            <!-- 1. Telepon -->
+        <div class="social-icons reveal">
             <a href="tel:+6281234567890" class="social-icon-btn" title="Telepon">
                 <i class="fa-solid fa-phone"></i>
             </a>
-            <!-- 2. WhatsApp -->
-            <a href="https://wa.me/6281234567890" target="_blank" class="social-icon-btn" title="WhatsApp">
+            <!-- Tautan Email telah disesuaikan agar langsung ke halaman Compose Gmail -->
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=evankrisna176@gmail.com" target="_blank" class="social-icon-btn" title="Email / Gmail">
                 <i class="fa-solid fa-envelope"></i>
             </a>
-            <!-- 3. LinkedIn -->
             <a href="https://linkedin.com/in/username-anda" target="_blank" class="social-icon-btn" title="LinkedIn">
                 <i class="fa-brands fa-linkedin-in"></i>
             </a>
-            <!-- 4. GitHub -->
             <a href="https://github.com/evankrisnaa11" target="_blank" class="social-icon-btn" title="GitHub">
                 <i class="fa-brands fa-github"></i>
             </a>
-            <!-- 5. Instagram -->
             <a href="https://instagram.com/username-anda" target="_blank" class="social-icon-btn" title="Instagram">
                 <i class="fa-brands fa-instagram"></i>
             </a>
-            <!-- 6. YouTube -->
             <a href="https://youtube.com/@username-anda" target="_blank" class="social-icon-btn" title="YouTube">
                 <i class="fa-brands fa-youtube"></i>
             </a>
-            <!-- 7. Twitter / X -->
             <a href="https://twitter.com/username-anda" target="_blank" class="social-icon-btn" title="Twitter">
                 <i class="fa-brands fa-twitter"></i>
             </a>
@@ -878,5 +887,32 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
+    <!-- SCRIPT UNTUK ANIMASI SCROLL REVEAL -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Menggunakan Intersection Observer untuk mendeteksi elemen saat di-scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Animasi dimulai saat 15% elemen terlihat di layar
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Opsional: Hentikan observasi setelah animasi berjalan sekali agar performa lebih baik
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Terapkan observer ke semua elemen yang memiliki kelas 'reveal'
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
