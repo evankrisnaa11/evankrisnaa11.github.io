@@ -32,7 +32,7 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-dark);
-            overflow-x: hidden;
+            overflow-x: hidden; /* Mencegah scroll menyamping */
         }
 
         /* --- Navigasi dengan Kotak Blur --- */
@@ -78,16 +78,16 @@
             color: var(--primary-purple);
         }
 
-        /* --- Animasi Scroll Reveal --- */
+        /* --- Animasi Scroll Reveal (Fade in Up) --- */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease-out;
+            transform: translateY(40px); /* Elemen turun 40px */
+            transition: all 0.8s ease-out; /* Durasi animasi 0.8 detik */
         }
 
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0); /* Elemen naik ke posisi asli */
         }
 
         /* --- Hero Section (Beranda) --- */
@@ -295,7 +295,6 @@
             text-decoration: none;
             margin-bottom: 15px;
             font-size: 0.95rem;
-            cursor: pointer;
         }
 
         .card-link:hover {
@@ -572,7 +571,7 @@
             text-decoration: underline;
         }
 
-        /* --- Section: Kontak --- */
+        /* --- Section: Kontak (Sesuai Referensi) --- */
         .contact-section {
             padding: 90px 8%;
             background-color: var(--bg-light);
@@ -641,82 +640,6 @@
             transform: translateY(-3px);
         }
 
-        /* --- GAYA UNTUK MODAL / POP-UP PORTOFOLIO --- */
-        .modal {
-            display: none; 
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.6); 
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.show {
-            opacity: 1;
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto; 
-            padding: 30px;
-            border: 1px solid #888;
-            width: 85%;
-            max-width: 800px;
-            border-radius: 12px;
-            position: relative;
-            transform: translateY(-50px);
-            transition: transform 0.3s ease;
-        }
-
-        .modal.show .modal-content {
-            transform: translateY(0);
-        }
-
-        .close-modal {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: -10px;
-        }
-
-        .close-modal:hover,
-        .close-modal:focus {
-            color: var(--primary-purple);
-            text-decoration: none;
-        }
-
-        #modalImg {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        #modalTitle {
-            font-size: 1.8rem;
-            color: var(--text-dark);
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-
-        #modalDesc {
-            font-size: 1rem;
-            color: var(--text-gray);
-            line-height: 1.7;
-            white-space: pre-wrap; 
-        }
-
         /* --- Responsivitas HP --- */
         @media (max-width: 992px) {
             .hero, .about-container {
@@ -733,11 +656,6 @@
             }
             .nav-links {
                 display: none;
-            }
-            .modal-content {
-                width: 90%;
-                margin: 10% auto;
-                padding: 20px;
             }
         }
     </style>
@@ -759,6 +677,7 @@
     </nav>
 
     <!-- Bagian Beranda (Hero) -->
+    <!-- Kelas 'reveal' ditambahkan untuk memicu animasi fade-in -->
     <section class="hero">
         <div class="hero-text reveal">
             <div class="greeting">Halo Semua 👋, Saya</div>
@@ -772,6 +691,7 @@
 
         <div class="hero-image reveal">
             <div class="image-bg-circle">
+                <!-- Telah diperbaiki: .png.png menjadi .png -->
                 <img src="foto-evan.png" alt="Foto Evan Krisna Wijaya">
             </div>
         </div>
@@ -805,33 +725,29 @@
         </div>
 
         <div class="portfolio-grid">
-            <!-- Portofolio 1 -->
             <div class="portfolio-card reveal">
                 <div class="card-preview">PRO-GRADE System</div>
                 <div class="card-body">
                     <h3>PRO-GRADE System</h3>
-                    <!-- Tautan ini sekarang memanggil fungsi JavaScript 'openModal' -->
-                    <a onclick="openModal('PRO-GRADE System', 'gambar-prograde.jpg', 'Sistem Pendukung Keputusan (DSS) ini dirancang menggunakan Google Apps Script dan Google Sheets. Sistem memproses puluhan ribu baris data histori transaksi komoditas untuk memberikan rekomendasi grading kontainer secara otomatis.\n\nTujuan dari sistem ini adalah untuk meningkatkan efisiensi yard management di depo kontainer dan meminimalisir kesalahan manusia (human error) dalam menentukan standar grading.')" class="card-link">Lihat Detail</a>
+                    <a href="#" class="card-link">Lihat Detail</a>
                     <p>Sistem Pendukung Keputusan (DSS) berbasis Google Apps Script dan Google Sheets untuk memberikan rekomendasi grading kontainer serta manajemen lapangan (yard management).</p>
                 </div>
             </div>
 
-            <!-- Portofolio 2 -->
             <div class="portfolio-card reveal">
                 <div class="card-preview">Citatah Climbing Co.</div>
                 <div class="card-body">
                     <h3>Citatah Climbing Co.</h3>
-                    <a onclick="openModal('Citatah Climbing Co.', 'gambar-citatah.jpg', 'Proyek pengembangan konsep bisnis dan produk untuk merek pakaian luar ruang (outdoor apparel) yang secara spesifik menargetkan komunitas panjat tebing dan kelompok mahasiswa pecinta alam.\n\nProyek ini mencakup riset pasar, desain fungsionalitas pakaian panjat yang ergonomis, serta strategi pemasaran melalui komunitas lokal.')" class="card-link">Lihat Konsep</a>
+                    <a href="#" class="card-link">Lihat Konsep</a>
                     <p>Pengembangan konsep bisnis, rancangan produk, dan strategi pemasaran untuk merek pakaian panjat tebing yang menargetkan kelompok mahasiswa pecinta alam.</p>
                 </div>
             </div>
 
-            <!-- Portofolio 3 -->
             <div class="portfolio-card reveal">
                 <div class="card-preview">Simulasi SCM Globe</div>
                 <div class="card-body">
                     <h3>Simulasi Rantai Pasok</h3>
-                    <a onclick="openModal('Simulasi Rantai Pasok SCM Globe', 'gambar-scmglobe.jpg', 'Pemodelan dan simulasi rantai pasok menggunakan perangkat lunak SCM Globe untuk proyek distribusi pakan koperasi.\n\nDalam proyek ini, dilakukan analisis biaya logistik, optimalisasi rute pengiriman kendaraan komersial, serta penentuan batas kapasitas fasilitas pergudangan agar pasokan tetap stabil dengan biaya paling efisien.')" class="card-link">Lihat Simulasi</a>
+                    <a href="#" class="card-link">Lihat Simulasi</a>
                     <p>Pemodelan dan simulasi rantai pasok menggunakan perangkat lunak SCM Globe untuk proyek distribusi pakan koperasi.</p>
                 </div>
             </div>
@@ -870,7 +786,7 @@
         </div>
     </section>
 
-    <!-- Bagian Pengalaman -->
+    <!-- Bagian Pengalaman (Kerja & Organisasi) -->
     <section id="pengalaman" class="experience-section">
         <div class="experience-header reveal">
             <div class="section-title">Pengalaman</div>
@@ -944,6 +860,7 @@
             <a href="tel:+6281234567890" class="social-icon-btn" title="Telepon">
                 <i class="fa-solid fa-phone"></i>
             </a>
+            <!-- Tautan Email telah disesuaikan agar langsung ke halaman Compose Gmail -->
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=evankrisna176@gmail.com" target="_blank" class="social-icon-btn" title="Email / Gmail">
                 <i class="fa-solid fa-envelope"></i>
             </a>
@@ -970,72 +887,32 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <!-- STRUKTUR HTML UNTUK MODAL (POP-UP) -->
-    <div id="portfolioModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <img id="modalImg" src="" alt="Detail Proyek">
-            <h3 id="modalTitle">Judul Proyek</h3>
-            <p id="modalDesc">Deskripsi detail proyek...</p>
-        </div>
-    </div>
-
-    <!-- SCRIPT JAVASCRIPT UNTUK MODAL & ANIMASI -->
+    <!-- SCRIPT UNTUK ANIMASI SCROLL REVEAL -->
     <script>
-        // --- 1. Logika untuk Animasi Scroll Reveal ---
         document.addEventListener("DOMContentLoaded", function() {
+            // Menggunakan Intersection Observer untuk mendeteksi elemen saat di-scroll
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.15 
+                threshold: 0.15 // Animasi dimulai saat 15% elemen terlihat di layar
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
+                        // Opsional: Hentikan observasi setelah animasi berjalan sekali agar performa lebih baik
                         observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
+            // Terapkan observer ke semua elemen yang memiliki kelas 'reveal'
             const revealElements = document.querySelectorAll('.reveal');
             revealElements.forEach(el => {
                 observer.observe(el);
             });
         });
-
-        // --- 2. Logika untuk Modal (Pop-up) Portofolio ---
-        const modal = document.getElementById("portfolioModal");
-
-        function openModal(title, imageSrc, description) {
-            // Mengisi konten modal dengan data yang diklik
-            document.getElementById("modalTitle").innerText = title;
-            document.getElementById("modalImg").src = imageSrc;
-            document.getElementById("modalDesc").innerText = description;
-            
-            // Menampilkan modal
-            modal.style.display = "block";
-            // Memberikan sedikit jeda sebelum menambahkan kelas 'show' agar efek transisi CSS berjalan
-            setTimeout(() => { 
-                modal.classList.add("show"); 
-            }, 10);
-        }
-
-        function closeModal() {
-            modal.classList.remove("show");
-            // Menunggu transisi selesai sebelum benar-benar disembunyikan dari HTML
-            setTimeout(() => { 
-                modal.style.display = "none"; 
-            }, 300);
-        }
-
-        // Menutup modal jika area di luar kotak modal diklik
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
     </script>
 </body>
 </html>
