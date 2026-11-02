@@ -1,1 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Proyek - Simulasi SCM Globe & AnyLogic</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+        :root {
+            --bg-dark: #0b1322;
+            --bg-gradient: linear-gradient(135deg, #141f36 0%, #080d1a 100%);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent-blue: #3b82f6;
+            --btn-yellow: #fef08a;
+            --btn-text: #0f172a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        /* --- Header Kembali --- */
+        .detail-header {
+            padding: 25px 8%;
+            background: rgba(11, 19, 34, 0.6);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--accent-blue);
+        }
+
+        /* --- Kontainer Utama --- */
+        .project-container {
+            max-width: 950px;
+            margin: 30px auto 80px auto;
+            padding: 0 20px;
+        }
+
+        .project-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        /* --- LAYOUT BAGIAN ATAS: GALLERY GAMBAR --- */
+        .gallery-section {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .image-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            object-fit: contain;
+        }
+
+        /* Grid 2 Kolom khusus Pengaturan Rute & Kendaraan */
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* --- LAYOUT BAGIAN BAWAH: TIMELINE --- */
+        .timeline-wrapper {
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .timeline-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 15px;
+            bottom: 25px;
+            width: 2px;
+            background: rgba(59, 130, 246, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 25px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 0 10px var(--accent-blue);
+            z-index: 2;
+        }
+
+        .content-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 12px 0;
+        }
+
+        .content-text {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 25px;
+        }
+
+        .tools-list, .formula-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tools-list li, .formula-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .tools-list li::before, .formula-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+        }
+
+        .formula-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 15px;
+        }
+
+        .code-snippet {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #93c5fd;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background-color: var(--btn-yellow);
+            color: var(--btn-text);
+            font-weight: 600;
+            font-size: 0.88rem;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background-color: #fde047;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(254, 240, 138, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .two-column-grid, .split-grid, .formula-list {
+                grid-template-columns: 1fr;
+            }
+            .project-title {
+                font-size: 1.8rem;
+            }
+            .timeline-wrapper {
+                padding-left: 25px;
+            }
+            .timeline-item::before {
+                left: -25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="detail-header">
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Portfolio
+        </a>
+    </header>
+
+    <div class="project-container">
+        <!-- Judul Utama -->
+        <h1 class="project-title">Pemodelan Biaya Operasional Kendaraan (SCM Globe)</h1>
+
+        <!-- BAGIAN ATAS: LAYOUT GAMBAR-GAMBAR PROYEK -->
+        <div class="gallery-section">
+            
+            <!-- 1. Pemetaan Rantai Pasok di SCM Globe -->
+            <div class="image-card">
+                <div class="image-label"><i class="fa-solid fa-map-location-dot"></i> Peta Distribusi Rantai Pasok (SCM Globe)</div>
+                <!-- Ganti nama file ini dengan gambar Peta (Screenshot ... 23.17.20) -->
+                <img src="scm-peta.png" alt="Pemetaan Rantai Pasok SCM Globe">
+            </div>
+
+            <!-- 2. Parameter Kendaraan & Rute (2 Gambar Sejajar) -->
+            <div class="image-card">
+                <div class="image-label"><i class="fa-solid fa-truck"></i> Pengaturan Kendaraan & Rute Distribusi</div>
+                <div class="two-column-grid">
+                    <!-- Kiri: Spesifikasi Kendaraan -->
+                    <img src="scm-kendaraan.png" alt="Pengaturan Spesifikasi Truk">
+                    <!-- Kanan: Penentuan Rute & Stop -->
+                    <img src="scm-rute.png" alt="Pengaturan Rute & Pemberhentian">
+                </div>
+            </div>
+
+            <!-- 3. Model Simulasi AnyLogic -->
+            <div class="image-card">
+                <div class="image-label"><i class="fa-solid fa-project-diagram"></i> Pemodelan Sistem Dinamik (AnyLogic)</div>
+                <!-- Ganti nama file ini dengan gambar AnyLogic (Screenshot ... 23.16.15) -->
+                <img src="scm-anylogic.png" alt="Model Biaya AnyLogic">
+            </div>
+
+        </div>
+
+        <!-- BAGIAN BAWAH: LINIMASA DESKRIPSI (PROBLEM, OBJECTIVE, TOOLS & FORMULA) -->
+        <div class="timeline-wrapper">
+            
+            <!-- Problem -->
+            <div class="timeline-item">
+                <div class="content-box">
+                    <h2 class="content-title">Problem</h2>
+                    <p class="content-text">
+                        Koperasi Peternak Sapi Bandung Utara menghadapi tantangan dalam merencanakan distribusi pakan ternak konsentrat secara efisien. Ketiadaan model matematis yang terstruktur menyebabkan sulitnya menghitung estimasi Biaya Operasional Kendaraan (BOK) yang mencakup variabel tetap (penyusutan, pajak) maupun tidak tetap (bahan bakar, ban, pelumas) pada setiap opsi rute pengiriman.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Objective -->
+            <div class="timeline-item">
+                <div class="content-box">
+                    <h2 class="content-title">Objective</h2>
+                    <p class="content-text">
+                        Menganalisis dan membuat model simulasi Biaya Operasional Kendaraan (BOK) guna menemukan rute dan skenario pendistribusian pakan ternak yang paling efisien dari segi biaya. Proyek ini memadukan visualisasi jaringan rantai pasok spasial dengan pemodelan sistem dinamik untuk menguji berbagai alternatif keputusan distribusi.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tools Highlight & Role -->
+            <div class="timeline-item">
+                <div class="split-grid">
+                    <!-- Tools Highlight -->
+                    <div class="content-box">
+                        <h2 class="content-title">Tools Highlight</h2>
+                        <ul class="tools-list">
+                            <li>SCM Globe (Supply Chain Modeling)</li>
+                            <li>AnyLogic (System Dynamics)</li>
+                            <li>Microsoft Excel (Data Processing)</li>
+                            <li>Vehicle Routing Analysis</li>
+                        </ul>
+                        <!-- Jika ada laporan PDF, tautkan di sini -->
+                        <a href="#" target="_blank" class="btn-download">Lihat Laporan Lengkap (PDF)</a>
+                    </div>
+
+                    <!-- Role & Tanggung Jawab -->
+                    <div class="content-box">
+                        <h2 class="content-title">Peran & Tanggung Jawab</h2>
+                        <ul class="formula-list">
+                            <li>Data Gathering: <span class="code-snippet">Rute, Jarak, Waktu Tempuh</span></li>
+                            <li>Cost Analysis: <span class="code-snippet">Komponen Biaya Kendaraan</span></li>
+                            <li>Simulation: <span class="code-snippet">Building Model (AnyLogic)</span></li>
+                            <li>Scenario Testing: <span class="code-snippet">Efficiency Comparison (SCM)</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
