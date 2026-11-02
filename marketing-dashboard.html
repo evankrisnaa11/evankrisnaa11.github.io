@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Proyek - Depo Data Marketing Dashboard</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg-dark: #0b1322;
+            --bg-gradient: linear-gradient(135deg, #141f36 0%, #080d1a 100%);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent-blue: #3b82f6;
+            --btn-yellow: #fef08a;
+            --btn-text: #0f172a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        /* --- Header Kembali --- */
+        .detail-header {
+            padding: 25px 8%;
+            background: rgba(11, 19, 34, 0.6);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--accent-blue);
+        }
+
+        /* --- Kontainer Utama --- */
+        .project-container {
+            max-width: 950px;
+            margin: 30px auto 80px auto;
+            padding: 0 20px;
+        }
+
+        .project-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        /* --- LAYOUT BAGIAN ATAS: GALLERY GAMBAR --- */
+        .gallery-section {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .image-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- LAYOUT BAGIAN BAWAH: TIMELINE --- */
+        .timeline-wrapper {
+            position: relative;
+            padding-left: 35px;
+        }
+
+        /* Garis Vertikal Linimasa */
+        .timeline-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 15px;
+            bottom: 25px;
+            width: 2px;
+            background: rgba(59, 130, 246, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        /* Titik Bulat Glowing */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 25px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 0 10px var(--accent-blue);
+            z-index: 2;
+        }
+
+        /* Kotak Konten Linimasa */
+        .content-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 12px 0;
+        }
+
+        .content-text {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Grid Pembagian Tools Highlight & Formula */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 25px;
+        }
+
+        .tools-list, .formula-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tools-list li, .formula-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .tools-list li::before, .formula-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+        }
+
+        .formula-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 15px;
+        }
+
+        .code-snippet {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #93c5fd;
+        }
+
+        /* Tombol Kuning File Lengkap */
+        .btn-download {
+            display: inline-block;
+            background-color: var(--btn-yellow);
+            color: var(--btn-text);
+            font-weight: 600;
+            font-size: 0.88rem;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background-color: #fde047;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(254, 240, 138, 0.2);
+        }
+
+        /* Responsivitas Layar HP */
+        @media (max-width: 768px) {
+            .split-grid, .formula-list {
+                grid-template-columns: 1fr;
+            }
+            .project-title {
+                font-size: 1.8rem;
+            }
+            .timeline-wrapper {
+                padding-left: 25px;
+            }
+            .timeline-item::before {
+                left: -25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Kembali ke Beranda -->
+    <header class="detail-header">
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Portfolio
+        </a>
+    </header>
+
+    <div class="project-container">
+        <!-- Judul Utama -->
+        <h1 class="project-title">Depo Data Marketing Dashboard</h1>
+
+        <!-- BAGIAN ATAS: LAYOUT GAMBAR-GAMBAR PROYEK -->
+        <div class="gallery-section">
+            
+            <!-- 1. Dasbor Utama & Tren Volume -->
+            <div class="image-card">
+                <div class="image-label"><i class="fa-solid fa-chart-line"></i> Analitik Volume & Filter Data</div>
+                <img src="imageA.png" alt="Dasbor Tren Volume">
+            </div>
+
+            <!-- 2. Analitik Performa Tim -->
+            <div class="image-card">
+                <div class="image-label"><i class="fa-solid fa-users-gear"></i> Analitik Performa Tim (System vs CS)</div>
+                <img src="imageC.png" alt="Dasbor Performa Tim">
+            </div>
+
+            <!-- 3. Peringkat & Status Customer -->
+            <div class="image-card">
+                <div class="image-label"><i class="fa-solid fa-trophy"></i> Peringkat & Aktivitas Customer</div>
+                <img src="imageB.png" alt="Peringkat Customer">
+            </div>
+
+        </div>
+
+        <!-- BAGIAN BAWAH: LINIMASA DESKRIPSI (PROBLEM, OBJECTIVE, TOOLS & FORMULA) -->
+        <div class="timeline-wrapper">
+            
+            <!-- Problem -->
+            <div class="timeline-item">
+                <div class="content-box">
+                    <h2 class="content-title">Problem</h2>
+                    <p class="content-text">
+                        Pemantauan volume transaksi harian, aktivitas pelanggan, dan performa tim Customer Service (CS) sebelumnya dilakukan secara manual dan tersebar di berbagai berkas. Hal ini menyulitkan tim marketing dalam melacak tren pergerakan volume secara <i>real-time</i> dan mengidentifikasi pelanggan yang mulai pasif.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Objective -->
+            <div class="timeline-item">
+                <div class="content-box">
+                    <h2 class="content-title">Objective</h2>
+                    <p class="content-text">
+                        Mengembangkan <b>Depo Analytics Pro</b>, sebuah dasbor web interaktif yang mengonsolidasikan data operasional depo. Dasbor ini dirancang untuk memfilter data secara dinamis, memvisualisasikan tren pergerakan kargo, memetakan peringkat pelanggan (Top Customer), serta memonitor kontribusi *data entry* antara sistem otomatis dan manual oleh CS.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tools Highlight & Formula yang Digunakan -->
+            <div class="timeline-item">
+                <div class="split-grid">
+                    <!-- Tools Highlight -->
+                    <div class="content-box">
+                        <h2 class="content-title">Tools Highlight</h2>
+                        <ul class="tools-list">
+                            <li>Data Visualization Dashboard</li>
+                            <li>Google Apps Script (Web App)</li>
+                            <li>Marketing Analytics</li>
+                            <li>Performance Monitoring</li>
+                        </ul>
+                        <!-- Ganti '#' dengan link menuju web app Anda jika ada -->
+                        <a href="#" target="_blank" class="btn-download">Klik di sini (Live Preview)</a>
+                    </div>
+
+                    <!-- Formula yang digunakan -->
+                    <div class="content-box">
+                        <h2 class="content-title">Logic & Metrik Utama</h2>
+                        <ul class="formula-list">
+                            <li>Trend Line: <span class="code-snippet">Volume per Tanggal</span></li>
+                            <li>Data Filter: <span class="code-snippet">By Date & Shipping Line</span></li>
+                            <li>CS Perf: <span class="code-snippet">% Input by User</span></li>
+                            <li>Cust Status: <span class="code-snippet">Aktif / Pasif Logic</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
