@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Data Entry & Relational Database</title>
+    <title>Detail Proyek - PRO-GRADE System</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
         :root {
-            --bg-dark: #121e31;
-            --bg-gradient: linear-gradient(135deg, #1b283d 0%, #0d1624 100%);
+            --bg-dark: #0b1322;
+            --bg-gradient: linear-gradient(135deg, #141f36 0%, #080d1a 100%);
             --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(100, 149, 237, 0.2);
-            --text-main: #e2e8f0;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f1f5f9;
             --text-muted: #94a3b8;
-            --accent-blue: #60a5fa;
-            --btn-bg: #fef08a; /* Warna kuning pudar untuk tombol */
-            --btn-text: #1e293b;
+            --accent-blue: #3b82f6;
+            --btn-yellow: #fef08a;
+            --btn-text: #0f172a;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -30,15 +34,14 @@
             min-height: 100vh;
         }
 
-        /* --- Header Khusus --- */
+        /* --- Header Kembali --- */
         .detail-header {
-            background-color: rgba(13, 22, 36, 0.8);
+            padding: 25px 8%;
+            background: rgba(11, 19, 34, 0.6);
             backdrop-filter: blur(10px);
-            padding: 20px 8%;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid var(--card-border);
         }
 
         .back-btn {
@@ -46,9 +49,9 @@
             color: var(--text-main);
             font-weight: 500;
             font-size: 0.95rem;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             transition: color 0.3s ease;
         }
 
@@ -58,90 +61,121 @@
 
         /* --- Kontainer Utama --- */
         .project-container {
-            max-width: 1000px;
-            margin: 40px auto;
+            max-width: 950px;
+            margin: 30px auto 80px auto;
             padding: 0 20px;
         }
 
         .project-title {
-            font-size: 2.5rem;
-            font-weight: 600;
+            font-size: 2.3rem;
+            font-weight: 700;
             color: #ffffff;
-            margin-bottom: 40px;
-            text-align: left;
+            margin-bottom: 35px;
+            text-align: center;
         }
 
-        /* --- Placeholder Gambar Dashboard (Untuk Referensi Master Data) --- */
-        .dashboard-img {
+        /* --- LAYOUT BAGIAN ATAS: GALLERY GAMBAR --- */
+        .gallery-section {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .image-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .image-card img {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            border: 1px solid var(--card-border);
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* --- Desain Timeline (Garis Penghubung Kiri) --- */
+        /* Grid 2 Kolom khusus Dashboard Hasil (image3.png & image4.png) */
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* --- LAYOUT BAGIAN BAWAH: TIMELINE --- */
         .timeline-wrapper {
             position: relative;
             padding-left: 35px;
         }
 
-        /* Garis vertikal penghubung */
+        /* Garis Vertikal Linimasa */
         .timeline-wrapper::before {
             content: '';
             position: absolute;
-            left: 5px;
-            top: 10px;
-            bottom: 20px;
+            left: 6px;
+            top: 15px;
+            bottom: 25px;
             width: 2px;
-            background: rgba(96, 165, 250, 0.3);
+            background: rgba(59, 130, 246, 0.3);
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        /* Titik/Bulatan pada garis timeline */
+        /* Titik Bulat Glowing */
         .timeline-item::before {
             content: '';
             position: absolute;
             left: -35px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
+            top: 25px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: var(--bg-dark);
             border: 2px solid var(--accent-blue);
-            box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+            box-shadow: 0 0 10px var(--accent-blue);
             z-index: 2;
         }
 
-        /* --- Styling Kotak Konten (Problem & Objective) --- */
+        /* Kotak Konten Linimasa */
         .content-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 25px 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
         }
 
         .content-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
             color: #ffffff;
-            margin: 0 0 15px 0;
+            margin: 0 0 12px 0;
         }
 
         .content-text {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             line-height: 1.7;
             margin: 0;
         }
 
-        /* --- Grid Bawah (Tools Highlight & Formulas) --- */
+        /* Grid Pembagian Tools Highlight & Formula */
         .split-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -156,10 +190,10 @@
 
         .tools-list li, .formula-list li {
             position: relative;
-            padding-left: 20px;
-            margin-bottom: 12px;
+            padding-left: 18px;
+            margin-bottom: 10px;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             line-height: 1.5;
         }
 
@@ -168,8 +202,7 @@
             position: absolute;
             left: 0;
             color: var(--accent-blue);
-            font-size: 1.2rem;
-            line-height: 1;
+            font-size: 1.1rem;
         }
 
         .formula-list {
@@ -180,21 +213,21 @@
 
         .code-snippet {
             font-family: 'Courier New', Courier, monospace;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.3);
             padding: 2px 6px;
             border-radius: 4px;
-            color: #bae6fd;
+            color: #93c5fd;
         }
 
-        /* --- Tombol Unduh / File Lengkap --- */
+        /* Tombol Kuning File Lengkap */
         .btn-download {
             display: inline-block;
-            background-color: var(--btn-bg);
+            background-color: var(--btn-yellow);
             color: var(--btn-text);
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             padding: 10px 20px;
-            border-radius: 8px;
+            border-radius: 25px;
             text-decoration: none;
             margin-top: 20px;
             transition: all 0.3s ease;
@@ -206,12 +239,9 @@
             box-shadow: 0 4px 12px rgba(254, 240, 138, 0.2);
         }
 
-        /* --- Responsivitas --- */
+        /* Responsivitas Layar HP */
         @media (max-width: 768px) {
-            .split-grid {
-                grid-template-columns: 1fr;
-            }
-            .formula-list {
+            .two-column-grid, .split-grid, .formula-list {
                 grid-template-columns: 1fr;
             }
             .project-title {
@@ -236,61 +266,81 @@
     </header>
 
     <div class="project-container">
-        <!-- Judul Proyek -->
-        <h1 class="project-title">Sales Data Entry & Relational Database</h1>
+        <!-- Judul Utama -->
+        <h1 class="project-title">PRO-GRADE System</h1>
 
-        <!-- Placeholder Gambar Tabel Master Data & Sales Record -->
-        <!-- Pastikan mengunggah gambar tabel Anda ke GitHub dan ganti 'gambar-tabel-sales.jpg' di bawah ini -->
-        <img src="gambar-tabel-sales.jpg" alt="Preview Tabel Sales Data" class="dashboard-img">
+        <!-- BAGIAN ATAS: LAYOUT GAMBAR-GAMBAR PROYEK -->
+        <div class="gallery-section">
+            
+            <!-- 1. Database Master -->
+            <div class="image-card">
+                <div class="image-label"><i class="fa-solid fa-database"></i> Database Master</div>
+                <img src="image1.png" alt="Database Master">
+            </div>
 
-        <!-- Linimasa Penjelasan (Problem, Objective, Tools) -->
+            <!-- 2. Antarmuka Pencarian -->
+            <div class="image-card">
+                <div class="image-label"><i class="fa-solid fa-magnifying-glass"></i> Antarmuka Pencarian</div>
+                <img src="image2.png" alt="Antarmuka Pencarian">
+            </div>
+
+            <!-- 3. Dashboard Hasil (2 Gambar Sejajar) -->
+            <div class="image-card">
+                <div class="image-label"><i class="fa-solid fa-chart-pie"></i> Dashboard Hasil</div>
+                <div class="two-column-grid">
+                    <img src="image3.png" alt="Dashboard Hasil 1">
+                    <img src="image4.png" alt="Dashboard Hasil 2">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BAGIAN BAWAH: LINIMASA DESKRIPSI (PROBLEM, OBJECTIVE, TOOLS & FORMULA) -->
         <div class="timeline-wrapper">
             
-            <!-- Item 1: Problem -->
+            <!-- Problem -->
             <div class="timeline-item">
                 <div class="content-box">
                     <h2 class="content-title">Problem</h2>
                     <p class="content-text">
-                        Pencatatan transaksi harian secara manual memakan banyak waktu dan sangat rentan terhadap kesalahan (human error). Sistem manual juga menyulitkan pemantauan harga aktual serta penentuan tingkatan (tier) diskon yang bervariasi berdasarkan volume pembelian pelanggan.
+                        Penentuan grading kontainer secara manual memakan waktu operasional yang signifikan dan rentan terhadap kesalahan manusia (human error). Penilaian manual juga menyulitkan analisis histori komoditas serta pencocokan standar mutu kontainer secara konsisten di lapangan.
                     </p>
                 </div>
             </div>
 
-            <!-- Item 2: Objective -->
+            <!-- Objective -->
             <div class="timeline-item">
                 <div class="content-box">
                     <h2 class="content-title">Objective</h2>
                     <p class="content-text">
-                        Membangun sistem administrasi data entry terotomatisasi berbasis fungsi relasional Excel (VLOOKUP). Sistem ini dirancang untuk menarik detail pelanggan, spesifikasi produk, harga, dan persentase diskon dari tabel Master Data secara instan. Solusi ini secara efektif menekan tingkat kesalahan input (zero-error data processing) dan mengakselerasi operasional pencatatan penjualan harian.
+                        Membangun Sistem Pendukung Keputusan (DSS) terotomatisasi berbasis Google Apps Script dan Google Sheets. Sistem dirancang untuk mengolah puluhan ribu data riwayat transaksi guna menghasilkan rekomendasi grade kontainer secara presisi, meningkatkan efisiensi yard management, dan menekan angka kesalahan grading.
                     </p>
                 </div>
             </div>
 
-            <!-- Item 3: Tools & Formula -->
+            <!-- Tools Highlight & Formula yang Digunakan -->
             <div class="timeline-item">
                 <div class="split-grid">
-                    <!-- Bagian Kiri: Tools Highlight -->
+                    <!-- Tools Highlight -->
                     <div class="content-box">
                         <h2 class="content-title">Tools Highlight</h2>
                         <ul class="tools-list">
-                            <li>Microsoft Excel (VLOOKUP)</li>
-                            <li>Relational Data Management</li>
-                            <li>Data Entry Automation</li>
+                            <li>Google Apps Script</li>
+                            <li>Google Sheets Database</li>
+                            <li>Yard Management System</li>
+                            <li>Decision Support System</li>
                         </ul>
-                        <!-- Tautan ke file Excel asli atau Google Drive -->
                         <a href="#" target="_blank" class="btn-download">Klik di sini (File Lengkapnya)</a>
                     </div>
 
-                    <!-- Bagian Kanan: Formula -->
+                    <!-- Formula yang digunakan -->
                     <div class="content-box">
                         <h2 class="content-title">Formula yang digunakan</h2>
                         <ul class="formula-list">
-                            <li>Customer Name: <span class="code-snippet">=VLOOKUP(C2, Master_Data!$B$4:$C$10, 2, FALSE)</span></li>
-                            <li>Product Name: <span class="code-snippet">=VLOOKUP(E2, Master_Data!$F$4:$H$10, 2, FALSE)</span></li>
-                            <li>Unit Price: <span class="code-snippet">=VLOOKUP(E2, Master_Data!$F$4:$H$10, 3, FALSE)</span></li>
-                            <li>Discount: <span class="code-snippet">=VLOOKUP(G2, Master_Data!$K$4:$L$7, 2, TRUE)</span></li>
-                            <li>Total Sales: <span class="code-snippet">=G2*H2</span></li>
-                            <li>Net Sales: <span class="code-snippet">=I2-(I2*J2)</span></li>
+                            <li>Customer Match: <span class="code-snippet">=FILTER(...)</span></li>
+                            <li>Grade Acc: <span class="code-snippet">=COUNTIF(...)</span></li>
+                            <li>Rec Engine: <span class="code-snippet">GAS Logic</span></li>
+                            <li>Yard Status: <span class="code-snippet">=ARRAYFORMULA(...)</span></li>
                         </ul>
                     </div>
                 </div>
