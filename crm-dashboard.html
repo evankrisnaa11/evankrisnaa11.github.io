@@ -167,6 +167,7 @@
             margin: 0;
         }
 
+        /* Grid Pembagian Tools Highlight & Formula */
         .split-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -210,6 +211,26 @@
             color: var(--accent-green);
         }
 
+        /* Tombol Kuning File Lengkap */
+        .btn-download {
+            display: inline-block;
+            background-color: var(--btn-yellow);
+            color: var(--btn-text);
+            font-weight: 600;
+            font-size: 0.88rem;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background-color: #fde047;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(254, 240, 138, 0.2);
+        }
+
         @media (max-width: 768px) {
             .split-grid, .formula-list {
                 grid-template-columns: 1fr;
@@ -244,14 +265,13 @@
             <!-- 1. Database Master (Data Cleansing) -->
             <div class="image-card">
                 <div class="image-label"><i class="fa-solid fa-table"></i> Database Master (Data Cleansing & Mapping)</div>
-                <!-- Ganti nama file ini dengan gambar spreadsheet Anda -->
-                <img src="imageY.jpg" alt="Database Master Leads B2B">
+                <!-- PENTING: Jika file di GitHub bernama 'imageY.JPG' atau 'imageY.jpeg' (huruf besar), sesuaikan tulisan di bawah ini. -->
+                <img src="imageY.jpg" alt="Database Master Leads B2B" onerror="this.onerror=null; this.src='imageY.JPG';">
             </div>
 
             <!-- 2. Dashboard CRM Web App -->
             <div class="image-card">
                 <div class="image-label"><i class="fa-solid fa-laptop-code"></i> Dashboard CRM Web App (Google Apps Script)</div>
-                <!-- Ganti nama file ini dengan gambar imageZ.png -->
                 <img src="imageZ.png" alt="Dashboard CRM Suite Web App">
             </div>
 
@@ -260,16 +280,6 @@
         <!-- BAGIAN BAWAH: LINIMASA DESKRIPSI (PROBLEM, OBJECTIVE, TOOLS & FORMULA) -->
         <div class="timeline-wrapper">
             
-            <!-- Problem -->
-            <div class="timeline-item">
-                <div class="content-box">
-                    <h2 class="content-title">Problem</h2>
-                    <p class="content-text">
-                        Tim Growth Marketing & Sales Operations menghadapi tantangan dalam mengelola data prospek B2B yang mentah dan tersebar (seperti perusahaan farmasi dan manufaktur). Pengecekan status *outreach*, riwayat kontak, dan *follow-up* secara manual melalui Google Sheets memakan banyak waktu dan sering kali mengakibatkan hilangnya peluang bisnis potensial (*leads pipeline*).
-                    </p>
-                </div>
-            </div>
-
             <!-- Objective -->
             <div class="timeline-item">
                 <div class="content-box">
@@ -292,6 +302,8 @@
                             <li>Google Sheets (Backend DB)</li>
                             <li>B2B Sales Funnel Management</li>
                         </ul>
+                        <!-- Tombol Lihat Selengkapnya Ditambahkan Di Sini -->
+                        <a href="#" target="_blank" class="btn-download">Lihat Selengkapnya</a>
                     </div>
 
                     <!-- Role & Tanggung Jawab -->
