@@ -134,9 +134,17 @@
         .description {
             font-size: 1rem;
             color: var(--text-gray);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             line-height: 1.6;
             max-width: 90%;
+        }
+
+        /* --- Pembungkus Tombol Aksi Hero --- */
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         .btn-contact {
@@ -152,6 +160,25 @@
 
         .btn-contact:hover {
             background-color: #55157d;
+            transform: translateY(-2px);
+        }
+
+        /* Tombol Unduh CV dengan gaya garis (outline) */
+        .btn-cv {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-purple);
+            border: 2px solid var(--primary-purple);
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cv:hover {
+            background-color: var(--primary-purple);
+            color: white;
             transform: translateY(-2px);
         }
 
@@ -281,7 +308,7 @@
         }
 
         .portfolio-card:hover .card-preview img {
-            transform: scale(1.08); /* Efek zoom saat disorot */
+            transform: scale(1.08);
         }
 
         .card-body {
@@ -659,7 +686,10 @@
                 margin-bottom: 40px;
             }
             .description {
-                margin: 0 auto 30px auto;
+                margin: 0 auto 20px auto;
+            }
+            .hero-buttons {
+                justify-content: center;
             }
             .nav-links {
                 display: none;
@@ -692,7 +722,13 @@
             <p class="description">
                 Portofolio ini menampilkan proyek dan kontribusi saya dalam optimalisasi rantai pasok, perancangan Sistem Pendukung Keputusan (DSS) seperti PRO-GRADE System, serta pengalaman operasional depo kontainer.
             </p>
-            <a href="#kontak" class="btn-contact">Hubungi Saya</a>
+            
+            <!-- Pembungkus Tombol Hubungi Saya & Unduh CV -->
+            <div class="hero-buttons">
+                <a href="#kontak" class="btn-contact">Hubungi Saya</a>
+                <!-- Ubah 'cv-evan-krisna.pdf' dengan nama file CV asli Anda yang diunggah ke GitHub -->
+                <a href="cv-evan-krisna.pdf" target="_blank" class="btn-cv"><i class="fa-solid fa-download"></i> Unduh CV</a>
+            </div>
         </div>
 
         <div class="hero-image reveal">
@@ -734,7 +770,7 @@
             <!-- Proyek 1: PRO-GRADE System -->
             <div class="portfolio-card reveal">
                 <div class="card-preview">
-                    <img src="image2.png" alt="Preview PRO-GRADE">
+                    <img src="image.png" alt="Preview PRO-GRADE">
                 </div>
                 <div class="card-body">
                     <h3>PRO-GRADE System</h3>
