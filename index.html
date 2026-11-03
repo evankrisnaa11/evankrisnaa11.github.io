@@ -290,7 +290,6 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        /* --- Pengaturan Preview Gambar Portofolio --- */
         .card-preview {
             height: 180px;
             width: 100%;
@@ -514,95 +513,96 @@
             line-height: 1.4;
         }
 
-        /* --- Section: Blog --- */
-        .blog-section {
+        /* --- Section: Tools (Sebelumnya Blog) --- */
+        .tools-section {
             padding: 80px 8%;
             background-color: var(--bg-color);
-            text-align: center;
         }
 
-        .blog-header {
+        .tools-header {
+            text-align: center;
             margin-bottom: 50px;
         }
 
-        .blog-header h2 {
+        .tools-header h2 {
             font-size: 2.5rem;
             font-weight: 700;
             margin: 0 0 10px 0;
             color: var(--text-dark);
         }
 
-        .blog-header p {
+        .tools-header p {
             color: var(--text-gray);
             font-size: 1rem;
             margin: 0;
         }
 
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            text-align: left;
-        }
-
-        .blog-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .blog-preview {
-            background: #e2e8f0;
-            height: 160px;
+        .tools-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            color: var(--primary-purple);
-            font-weight: 600;
-            font-size: 1rem;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .blog-body {
-            padding: 25px;
+        /* Gambar utama tools.jpg */
+        .tools-image-wrapper {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
         }
 
-        .blog-date {
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            margin-bottom: 8px;
+        .tools-image-wrapper img {
+            width: 100%;
+            height: auto;
             display: block;
+            transition: transform 0.5s ease;
         }
 
-        .blog-body h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
+        .tools-image-wrapper:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Daftar deskripsi keahlian di bawah gambar */
+        .tools-description {
+            background: var(--bg-light);
+            padding: 35px;
+            border-radius: 12px;
+            width: 100%;
+            border: 1px solid var(--border-color);
+        }
+
+        .tools-description h3 {
+            font-size: 1.5rem;
             color: var(--text-dark);
-            margin: 0 0 10px 0;
+            margin: 0 0 20px 0;
         }
 
-        .blog-body p {
+        .tools-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tools-list li {
+            position: relative;
+            padding-left: 25px;
             color: var(--text-gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin: 0 0 15px 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        .blog-link {
+        .tools-list li i {
+            position: absolute;
+            left: 0;
+            top: 4px;
             color: var(--primary-purple);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .blog-link:hover {
-            text-decoration: underline;
         }
 
         /* --- Section: Kontak --- */
@@ -694,6 +694,9 @@
             .nav-links {
                 display: none;
             }
+            .tools-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -708,7 +711,7 @@
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#pendidikan">Pendidikan</a></li>
             <li><a href="#pengalaman">Pengalaman</a></li>
-            <li><a href="#blog">Blog</a></li>
+            <li><a href="#tools">Tools</a></li>
             <li><a href="#kontak">Kontak</a></li>
         </ul>
     </nav>
@@ -723,10 +726,9 @@
                 Portofolio ini menampilkan proyek dan kontribusi saya dalam optimalisasi rantai pasok, perancangan Sistem Pendukung Keputusan (DSS) seperti PRO-GRADE System, serta pengalaman operasional depo kontainer.
             </p>
             
-            <!-- Pembungkus Tombol Hubungi Saya & Unduh CV -->
             <div class="hero-buttons">
                 <a href="#kontak" class="btn-contact">Hubungi Saya</a>
-                <!-- Ubah 'cv-evan-krisna.pdf' dengan nama file CV asli Anda yang diunggah ke GitHub -->
+                <!-- Ganti nama file ini dengan CV asli Anda -->
                 <a href="cv-evan-krisna.pdf" target="_blank" class="btn-cv"><i class="fa-solid fa-download"></i> Unduh CV</a>
             </div>
         </div>
@@ -767,7 +769,6 @@
 
         <div class="portfolio-grid">
             
-            <!-- Proyek 1: PRO-GRADE System -->
             <div class="portfolio-card reveal">
                 <div class="card-preview">
                     <img src="image.png" alt="Preview PRO-GRADE">
@@ -779,7 +780,6 @@
                 </div>
             </div>
 
-            <!-- Proyek 2: Depo Data Marketing Dashboard -->
             <div class="portfolio-card reveal">
                 <div class="card-preview">
                     <img src="imageA.png" alt="Preview Marketing Dashboard">
@@ -791,7 +791,6 @@
                 </div>
             </div>
 
-            <!-- Proyek 3: Simulasi SCM Globe -->
             <div class="portfolio-card reveal">
                 <div class="card-preview">
                     <img src="scm-peta.png" alt="Preview Simulasi SCM" onerror="this.onerror=null; this.src='Screenshot 2025-07-03 23.17.20.png';">
@@ -803,7 +802,6 @@
                 </div>
             </div>
             
-            <!-- Proyek 4: B2B CRM Dashboard -->
             <div class="portfolio-card reveal">
                 <div class="card-preview">
                     <img src="imageZ.png" alt="Preview CRM Dashboard">
@@ -850,7 +848,7 @@
         </div>
     </section>
 
-    <!-- Bagian Pengalaman (Kerja & Organisasi) -->
+    <!-- Bagian Pengalaman -->
     <section id="pengalaman" class="experience-section">
         <div class="experience-header reveal">
             <div class="section-title">Pengalaman</div>
@@ -882,33 +880,33 @@
         </div>
     </section>
 
-    <!-- Bagian Blog -->
-    <section id="blog" class="blog-section">
-        <div class="blog-header reveal">
-            <div class="section-title">Blog</div>
-            <h2>Catatan & Artikel</h2>
-            <p>Tulisan seputar logistik, otomatisasi data, dan pengalaman organisasi</p>
+    <!-- Bagian Tools & Keahlian (Pengganti Blog) -->
+    <section id="tools" class="tools-section">
+        <div class="tools-header reveal">
+            <div class="section-title">Tools & Keahlian</div>
+            <h2>Perangkat Lunak & Sistem</h2>
+            <p>Teknologi yang saya gunakan untuk pemrosesan data, otomatisasi, dan operasional logistik</p>
         </div>
 
-        <div class="blog-grid">
-            <div class="blog-card reveal">
-                <div class="blog-preview">Artikel 1</div>
-                <div class="blog-body">
-                    <span class="blog-date">September 2026</span>
-                    <h3>Otomatisasi Yard Management dengan Google Apps Script</h3>
-                    <p>Bagaimana penerapan sistem berbasis cloud sederhana dapat meningkatkan efisiensi operasional harian di depo kontainer.</p>
-                    <a href="#" class="blog-link">Baca Selengkapnya &rarr;</a>
-                </div>
+        <div class="tools-container">
+            <!-- Menampilkan gambar banner tools.jpg -->
+            <div class="tools-image-wrapper reveal">
+                <img src="tools.jpg" alt="Software dan Tools yang Dikuasai Evan Krisna Wijaya">
             </div>
 
-            <div class="blog-card reveal">
-                <div class="blog-preview">Artikel 2</div>
-                <div class="blog-body">
-                    <span class="blog-date">Agustus 2026</span>
-                    <h3>Refleksi Kepemimpinan di Organisasi Mahasiswa</h3>
-                    <p>Pelajaran berharga seputar manajemen tim, penyusunan laporan pertanggungjawaban, dan dinamika kegiatan alam bebas.</p>
-                    <a href="#" class="blog-link">Baca Selengkapnya &rarr;</a>
-                </div>
+            <!-- Detail daftar tools -->
+            <div class="tools-description reveal">
+                <h3>Penguasaan Software Utama</h3>
+                <ul class="tools-list">
+                    <li><i class="fa-solid fa-code"></i> Google Apps Script (Web App & Automasi)</li>
+                    <li><i class="fa-solid fa-file-excel"></i> Ms. Excel (VLOOKUP, Relational DB)</li>
+                    <li><i class="fa-solid fa-table"></i> Google Sheets & Looker Studio</li>
+                    <li><i class="fa-solid fa-map-location-dot"></i> SCM Globe (Supply Chain Simulation)</li>
+                    <li><i class="fa-solid fa-gears"></i> AnyLogic (System Dynamics Modeling)</li>
+                    <li><i class="fa-brands fa-windows"></i> Microsoft Office (Word, PowerPoint)</li>
+                    <li><i class="fa-solid fa-server"></i> SAP Enterprise System (Fundamental)</li>
+                    <li><i class="fa-solid fa-pen-nib"></i> Canva & Design Tools</li>
+                </ul>
             </div>
         </div>
     </section>
