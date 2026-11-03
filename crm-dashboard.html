@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Proyek - B2B Customer Mapping & Automated CRM Dashboard</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg-dark: #0b1322;
+            --bg-gradient: linear-gradient(135deg, #141f36 0%, #080d1a 100%);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --btn-yellow: #fef08a;
+            --btn-text: #0f172a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        /* --- Header Kembali --- */
+        .detail-header {
+            padding: 25px 8%;
+            background: rgba(11, 19, 34, 0.6);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--accent-blue);
+        }
+
+        /* --- Kontainer Utama --- */
+        .project-container {
+            max-width: 950px;
+            margin: 30px auto 80px auto;
+            padding: 0 20px;
+        }
+
+        .project-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        /* --- LAYOUT BAGIAN ATAS: GALLERY GAMBAR --- */
+        .gallery-section {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .image-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            object-fit: contain;
+        }
+
+        /* --- LAYOUT BAGIAN BAWAH: TIMELINE --- */
+        .timeline-wrapper {
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .timeline-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 15px;
+            bottom: 25px;
+            width: 2px;
+            background: rgba(59, 130, 246, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 25px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 0 10px var(--accent-blue);
+            z-index: 2;
+        }
+
+        .content-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 12px 0;
+        }
+
+        .content-text {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 25px;
+        }
+
+        .tools-list, .formula-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tools-list li, .formula-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .tools-list li::before, .formula-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+        }
+
+        .formula-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 15px;
+        }
+
+        .code-snippet {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent-green);
+        }
+
+        @media (max-width: 768px) {
+            .split-grid, .formula-list {
+                grid-template-columns: 1fr;
+            }
+            .project-title {
+                font-size: 1.8rem;
+            }
+            .timeline-wrapper {
+                padding-left: 25px;
+            }
+            .timeline-item::before {
+                left: -25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="detail-header">
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Portfolio
+        </a>
+    </header>
+
+    <div class="project-container">
+        <!-- Judul Utama -->
+        <h1 class="project-title">B2B Customer Mapping & Automated CRM Dashboard</h1>
+
+        <!-- BAGIAN ATAS: LAYOUT GAMBAR-GAMBAR PROYEK -->
+        <div class="gallery-section">
+            
+            <!-- 1. Database Master (Data Cleansing) -->
+            <div class="image-card">
+                <div class="image-label"><i class="fa-solid fa-table"></i> Database Master (Data Cleansing & Mapping)</div>
+                <!-- Ganti nama file ini dengan gambar spreadsheet Anda -->
+                <img src="database-master.jpg" alt="Database Master Leads B2B">
+            </div>
+
+            <!-- 2. Dashboard CRM Web App -->
+            <div class="image-card">
+                <div class="image-label"><i class="fa-solid fa-laptop-code"></i> Dashboard CRM Web App (Google Apps Script)</div>
+                <!-- Ganti nama file ini dengan gambar imageZ.png -->
+                <img src="imageZ.png" alt="Dashboard CRM Suite Web App">
+            </div>
+
+        </div>
+
+        <!-- BAGIAN BAWAH: LINIMASA DESKRIPSI (PROBLEM, OBJECTIVE, TOOLS & FORMULA) -->
+        <div class="timeline-wrapper">
+            
+            <!-- Problem -->
+            <div class="timeline-item">
+                <div class="content-box">
+                    <h2 class="content-title">Problem</h2>
+                    <p class="content-text">
+                        Tim Growth Marketing & Sales Operations menghadapi tantangan dalam mengelola data prospek B2B yang mentah dan tersebar (seperti perusahaan farmasi dan manufaktur). Pengecekan status *outreach*, riwayat kontak, dan *follow-up* secara manual melalui Google Sheets memakan banyak waktu dan sering kali mengakibatkan hilangnya peluang bisnis potensial (*leads pipeline*).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Objective -->
+            <div class="timeline-item">
+                <div class="content-box">
+                    <h2 class="content-title">Objective</h2>
+                    <p class="content-text">
+                        Melakukan *data cleansing* menyeluruh pada *database* pelanggan, memetakan potensi kebutuhan industri (seperti *tooling, mold & die*), dan mengembangkan aplikasi web CRM interaktif berbasis Google Apps Script. Dashboard ini dirancang untuk mengotomatiskan pemantauan target harian tim sales, menampilkan indikator prioritas tinggi, dan menyaring data berdasarkan industri, PIC internal, maupun rentang tanggal secara <i>real-time</i>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tools Highlight & Role -->
+            <div class="timeline-item">
+                <div class="split-grid">
+                    <!-- Tools Highlight -->
+                    <div class="content-box">
+                        <h2 class="content-title">Tools Highlight</h2>
+                        <ul class="tools-list">
+                            <li>Google Apps Script (GAS)</li>
+                            <li>HTML, CSS, JavaScript (UI/UX)</li>
+                            <li>Google Sheets (Backend DB)</li>
+                            <li>B2B Sales Funnel Management</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role & Tanggung Jawab -->
+                    <div class="content-box">
+                        <h2 class="content-title">Fokus Analisis & Pemetaan</h2>
+                        <ul class="formula-list">
+                            <li>Data Cleansing: <span class="code-snippet">Raw to Standard Name</span></li>
+                            <li>Industry Mapping: <span class="code-snippet">Pharma, FMCG, Mfg</span></li>
+                            <li>Dashboard Filter: <span class="code-snippet">Status, Priority, Date</span></li>
+                            <li>Outreach KPI: <span class="code-snippet">Contact Verification</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
