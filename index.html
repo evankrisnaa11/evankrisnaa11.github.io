@@ -484,9 +484,10 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
+        /* Logo Pengalaman diubah agar logo horizontal terlihat lebih besar */
         .exp-logo {
-            width: 90px;
-            height: 90px;
+            width: 140px; /* Ukuran diperlebar untuk logo horizontal seperti Samudera */
+            height: 80px;
             object-fit: contain;
             margin-bottom: 20px;
             filter: grayscale(100%) brightness(100%);
@@ -513,7 +514,7 @@
             line-height: 1.4;
         }
 
-        /* --- Section: Tools (Sebelumnya Blog) --- */
+        /* --- Section: Tools --- */
         .tools-section {
             padding: 80px 8%;
             background-color: var(--bg-color);
@@ -546,7 +547,6 @@
             margin: 0 auto;
         }
 
-        /* Gambar utama tools.jpg */
         .tools-image-wrapper {
             width: 100%;
             border-radius: 16px;
@@ -566,7 +566,6 @@
             transform: scale(1.03);
         }
 
-        /* Daftar deskripsi keahlian di bawah gambar */
         .tools-description {
             background: var(--bg-light);
             padding: 35px;
@@ -728,7 +727,6 @@
             
             <div class="hero-buttons">
                 <a href="#kontak" class="btn-contact">Hubungi Saya</a>
-                <!-- Ganti nama file ini dengan CV asli Anda -->
                 <a href="cv-evan-krisna.pdf" target="_blank" class="btn-cv"><i class="fa-solid fa-download"></i> Unduh CV</a>
             </div>
         </div>
@@ -858,11 +856,22 @@
 
         <div class="exp-category-title reveal">Pengalaman Kerja & Magang</div>
         <div class="exp-grid">
+            
+            <!-- Tambahan Pengalaman Plus Group -->
             <div class="exp-card reveal">
+                <!-- Pastikan Anda mengunggah logo-plus.png ke GitHub -->
+                <img src="logo-plus.png" alt="Plus Group" class="exp-logo" title="Klik untuk melihat warna asli">
+                <h3>Plus Group</h3>
+                <p>B2B Growth Marketing & Sales Operations Intern<br>Oktober 2026 - Saat Ini</p>
+            </div>
+
+            <div class="exp-card reveal">
+                <!-- Logo Samudera akan otomatis melebar dengan kode CSS .exp-logo yang baru -->
                 <img src="logo-masaji.png" alt="PT Masaji Tatanan Container" class="exp-logo" title="Klik untuk melihat warna asli">
                 <h3>PT Masaji Tatanan Container Indonesia</h3>
                 <p>Commercial Marketing Intern<br>Agustus 2025 - Desember 2025</p>
             </div>
+
         </div>
 
         <div class="exp-category-title reveal">Pengalaman Organisasi</div>
@@ -880,7 +889,7 @@
         </div>
     </section>
 
-    <!-- Bagian Tools & Keahlian (Pengganti Blog) -->
+    <!-- Bagian Tools & Keahlian -->
     <section id="tools" class="tools-section">
         <div class="tools-header reveal">
             <div class="section-title">Tools & Keahlian</div>
@@ -889,12 +898,10 @@
         </div>
 
         <div class="tools-container">
-            <!-- Menampilkan gambar banner tools.jpg -->
             <div class="tools-image-wrapper reveal">
                 <img src="tools.jpg" alt="Software dan Tools yang Dikuasai Evan Krisna Wijaya">
             </div>
 
-            <!-- Detail daftar tools -->
             <div class="tools-description reveal">
                 <h3>Penguasaan Software Utama</h3>
                 <ul class="tools-list">
